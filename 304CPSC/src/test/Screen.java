@@ -6,16 +6,35 @@ import java.awt.event.ActionListener;
 
 public class Screen {
     private JPanel panel1;
-    private JComboBox list1;
-    private JTextArea enterQueryHereTextArea;
-    private JComboBox list2;
-    private JButton exampleButtonButton;
+    private JButton insertButton;
+    private JButton deleteButton;
+    private JButton updateButton;
+    private JButton viewButton;
 
     public Screen() {
-        exampleButtonButton.addActionListener(new ActionListener() {
+        viewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Testing Testing");
+                // TODO: View Button
+            }
+        });
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO: Update Button
+            }
+        });
+        insertButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO: Insert Button
+            }
+        });
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO: Insert Button
             }
         });
     }
