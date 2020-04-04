@@ -21,7 +21,7 @@ public class Screen {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Screen");
+        JFrame frame = new JFrame("QueryHandler");
         frame.setContentPane(new Screen() .panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
