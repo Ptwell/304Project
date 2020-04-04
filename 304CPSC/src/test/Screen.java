@@ -24,7 +24,7 @@ public class Screen {
         JFrame frame = new JFrame("Screen");
         frame.setContentPane(new Screen() .panel1);
         frame.pack();
-        
+        frame.setVisible(true);
      }
 }
 
