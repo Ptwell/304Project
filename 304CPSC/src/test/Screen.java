@@ -10,6 +10,7 @@ public class Screen {
     private JButton deleteButton;
     private JButton updateButton;
     private JButton viewButton;
+    private JButton TABLEA;
 
     public Screen() {
         viewButton.addActionListener(new ActionListener() {
@@ -32,6 +33,7 @@ public class Screen {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Insert Button");
                 // TODO: Insert Button
+
             }
         });
         deleteButton.addActionListener(new ActionListener() {
