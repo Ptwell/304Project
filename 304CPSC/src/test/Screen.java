@@ -24,6 +24,7 @@ public class Screen {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Update Button");
                 // TODO: Update Button
+
             }
         });
         insertButton.addActionListener(new ActionListener() {
@@ -37,7 +38,7 @@ public class Screen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Delete Button");
-                // TODO: Insert Button
+                // TODO: Delete Button
             }
         });
     }
