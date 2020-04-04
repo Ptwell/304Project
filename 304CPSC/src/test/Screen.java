@@ -15,25 +15,28 @@ public class Screen {
         viewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Testing Testing");
+                JOptionPane.showMessageDialog(null, "View Button");
                 // TODO: View Button
             }
         });
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Update Button");
                 // TODO: Update Button
             }
         });
         insertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Insert Button");
                 // TODO: Insert Button
             }
         });
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Delete Button");
                 // TODO: Insert Button
             }
         });
