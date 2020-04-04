@@ -8,16 +8,6 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="42d4f" class="javax.swing.JButton" binding="updateButton" default-binding="true">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="300" height="100"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Update"/>
-        </properties>
-      </component>
       <component id="bc7c3" class="javax.swing.JButton" binding="insertButton" default-binding="true">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -59,6 +49,16 @@
         </constraints>
         <properties>
           <text value="View"/>
+        </properties>
+      </component>
+      <component id="42d4f" class="javax.swing.JButton" binding="updateButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="300" height="100"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Update"/>
         </properties>
       </component>
     </children>
