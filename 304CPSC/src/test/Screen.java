@@ -6,25 +6,16 @@ import java.awt.event.ActionListener;
 
 public class Screen {
     private JPanel panel1;
-    private JComboBox list1;
-    private JTextArea pleaseChooseOneOfTextArea;
-    private JButton exampleButtonButton;
     private JButton insertButton;
     private JButton deleteButton;
     private JButton updateButton;
     private JButton viewButton;
 
     public Screen() {
-        exampleButtonButton.addActionListener(new ActionListener() {
+        viewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Testing Testing");
-            }
-        });
-        list1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
             }
         });
     }
