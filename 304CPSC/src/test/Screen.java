@@ -1,7 +1,7 @@
 package test;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Screen {
@@ -11,16 +11,20 @@ public class Screen {
     private JComboBox list2;
     private JButton exampleButtonButton;
 
-    public Screen()
-    {
-        exampleButtonButton = new JButton("example button");
-        enterQueryHereTextArea = new JTextArea("enter query here！！");
-        String[] operation = {"insert" , "delete", "update"};
-        list1 = new JComboBox(operation);
-        list1.setSelectedIndex(4);
-        //list1.addActionListener(this);
+    public Screen() {
+        exampleButtonButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Testing Testing");
+            }
+        });
     }
-    //@Override
-  //  public void actionPerformed(ActionEvent e) {
-   // };
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("QueryHandler");
+        frame.setContentPane(new Screen() .panel1);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+     }
 }
