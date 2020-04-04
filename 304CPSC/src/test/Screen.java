@@ -23,6 +23,7 @@ public class Screen {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Screen");
         frame.setContentPane(new Screen() .panel1);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
      }
