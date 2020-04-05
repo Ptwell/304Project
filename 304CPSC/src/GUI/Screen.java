@@ -1,4 +1,4 @@
-package test;
+package GUI;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,6 +17,7 @@ public class Screen {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "View Button"); // temporary
                 // TODO: View Button
+
             }
         });
         updateButton.addActionListener(new ActionListener() {
