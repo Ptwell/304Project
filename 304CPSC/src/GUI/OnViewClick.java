@@ -10,7 +10,7 @@ public class OnViewClick extends JDialog {
     private JButton buttonCancel;
     private JButton projectionButton;
     private JButton selectionButton;
-    private Container returnPane;
+    private JPanel ret;
 
     public OnViewClick() {
 
@@ -46,10 +46,7 @@ public class OnViewClick extends JDialog {
 
     private void onOK() {
         // add your code here
-        dispose();
-        setVisible(false);
-        setContentPane(returnPane);
-        revalidate();
+        setContentPane(ret);
 
 
 //        Screen frame = new Screen();
@@ -61,9 +58,9 @@ public class OnViewClick extends JDialog {
         setVisible(false);
     }
 
-    public void showFrame() {
+    public void showFrame(JPanel th) {
+        ret = th;
         OnViewClick dialog = new OnViewClick();
-        returnPane = getContentPane();
         dialog.setContentPane(contentPane);
         // dialog.setModal(true);
         // dialog.getRootPane().setDefaultButton(buttonOK);
