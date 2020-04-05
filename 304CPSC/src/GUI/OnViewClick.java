@@ -11,9 +11,6 @@ public class OnViewClick extends JDialog {
     private JButton selectionButton;
 
     public OnViewClick() {
-        setContentPane(contentPane);
-        setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -27,25 +24,27 @@ public class OnViewClick extends JDialog {
             }
         });
 
-        // call onCancel() when cross is clicked
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                onCancel();
-            }
-        });
+//        // call onCancel() when cross is clicked
+        setDefaultCloseOperation(HIDE_ON_CLOSE);
+//        addWindowListener(new WindowAdapter() {
+//            public void windowClosing(WindowEvent e) {
+//                onCancel();
+//            }
+//        });
 
         // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+//        contentPane.registerKeyboardAction(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                onCancel();
+//            }
+//        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     private void onOK() {
         // add your code here
         dispose();
+//        Screen frame = new Screen();
+//        frame.showFrame();
     }
 
     private void onCancel() {
@@ -55,8 +54,11 @@ public class OnViewClick extends JDialog {
 
     public void showFrame() {
         OnViewClick dialog = new OnViewClick();
+        dialog.setContentPane(contentPane);
+        dialog.setModal(true);
+        dialog.getRootPane().setDefaultButton(buttonOK);
         dialog.pack();
         dialog.setVisible(true);
-        System.exit(0);
+        // System.exit(0);
     }
 }
