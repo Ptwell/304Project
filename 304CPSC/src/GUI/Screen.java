@@ -10,7 +10,7 @@ public class Screen {
     private JButton deleteButton;
     private JButton updateButton;
     private JButton viewButton;
-    private JButton TABLEA;
+    private JButton TABLE;
 
     public Screen() {
         viewButton.addActionListener(new ActionListener() {
@@ -46,7 +46,7 @@ public class Screen {
         });
     }
 
-    public static void main(String[] args) {
+    public void showFrame() {
         JFrame frame = new JFrame("QueryHandler");
         frame.setContentPane(new Screen() .panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
