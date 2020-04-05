@@ -50,6 +50,7 @@ public class OnViewClick extends JDialog {
         setVisible(false);
         setContentPane(returnPane);
         revalidate();
+        repaint();
 
 
 //        Screen frame = new Screen();
@@ -58,17 +59,21 @@ public class OnViewClick extends JDialog {
 
     private void onCancel() {
         // add your code here if necessary
+        dispose();
         setVisible(false);
+        setContentPane(returnPane);
+        revalidate();
+        repaint();
     }
 
-    public void showFrame() {
+    public void showFrame(OnViewClick view) {
         OnViewClick dialog = new OnViewClick();
         returnPane = getContentPane();
-        dialog.setContentPane(contentPane);
+        view.setContentPane(contentPane);
         // dialog.setModal(true);
         // dialog.getRootPane().setDefaultButton(buttonOK);
-        dialog.pack();
-        dialog.setVisible(true);
+        view.pack();
+        view.setVisible(true);
         // System.exit(0);
     }
 }
