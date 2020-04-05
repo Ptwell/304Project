@@ -9,63 +9,60 @@ import java.awt.event.ActionListener;
 import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
 
+import java.awt.event.*;
 public class MainClass {
-     // Screen screen = null;
+    // Screen screen = null;
 
-   // private JFrame frame = new JFrame("Query Engine");
-    private JPanel backgroundPanel = new JPanel();
+    // private JFrame frame = new JFrame("Query Engine");
     private JPanel mainPanel;
-    private  JPanel viewPanel;
-    private  JPanel deletePanel;
-    private  JPanel updatePanel;
-    private  JPanel insertPanel;
+    private JButton insertButton;
+    private JButton deleteButton;
+    private JButton viewButton;
+    private JButton updateButton;
+    private JPanel viewPanel;
+    private JPanel deletePanel;
+    private JPanel updatePanel;
+    private JPanel insertPanel;
 
-    private  JButton viewButton;
-    private  JButton updateButton;
-    private  JButton deleteButton;
-    private  JButton insertButton;
-    private  JButton selectionButton;
-    private  JButton projectionButton;
 
-    private  CardLayout cards = new CardLayout();
+    private JButton selectionButton;
+    private JButton projectionButton;
 
-     public MainClass() {
-          // backgroundPanel.setLayout(cards);
-         //start();
-         viewButton.addActionListener(new ActionListener() {
-             @Override
-             public void actionPerformed(ActionEvent e) {
-                 //  cards.show(viewPanel, "1");
-             }
-         });
-         updateButton.addActionListener(new ActionListener() {
-             @Override
-             public void actionPerformed(ActionEvent e) {
-                 JOptionPane.showMessageDialog(null, "Update Button"); // temporary
-                 // TODO: Update Button
-             }
-         });
-         insertButton.addActionListener(new ActionListener() {
-             @Override
-             public void actionPerformed(ActionEvent e) {
-                 JOptionPane.showMessageDialog(null, "Insert Button"); // temporary
-                 // TODO: Insert Button
-             }
-         });
-         deleteButton.addActionListener(new ActionListener() {
-             @Override
-             public void actionPerformed(ActionEvent e) {
-                 JOptionPane.showMessageDialog(null, "Delete Button"); // temporary
-                 // TODO: Insert Button
-             }
-         });
-         mainPanel.addContainerListener(new ContainerAdapter() {
-             @Override
-             public void componentAdded(ContainerEvent e) {
-                 super.componentAdded(e);
-             }
-         });
-     }
+    private CardLayout cards = new CardLayout();
+
+    private JPanel backgroundPanel = new JPanel();
+
+    public MainClass() {
+        // backgroundPanel.setLayout(cards);
+        //start();
+        viewButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //  cards.show(viewPanel, "1");
+            }
+        });
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Update Button"); // temporary
+                // TODO: Update Button
+            }
+        });
+        insertButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Insert Button"); // temporary
+                // TODO: Insert Button
+            }
+        });
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Delete Button"); // temporary
+                // TODO: Insert Button
+            }
+        });
+    }
 
     public void start() {
 
@@ -78,8 +75,6 @@ public class MainClass {
         cards.show(backgroundPanel, "0");
 
 
-
-
     }
 
     private void addComponent(Container contentPane) {
@@ -89,14 +84,16 @@ public class MainClass {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("QueryHandler");
-        MainClass m = new MainClass();
-        frame.setContentPane( m.backgroundPanel);
-        m.start();
-        frame.add(m.backgroundPanel);
 
+        MainClass m = new MainClass();
+        JFrame frame = new JFrame("QueryHandler");
+        frame.setContentPane(m.mainPanel);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
+        //m.start();
+        //frame.add(m.backgroundPanel);
+
+
         frame.setVisible(true);
 
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
