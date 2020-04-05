@@ -7,6 +7,8 @@ public class OnViewClick extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JButton projectionButton;
+    private JButton selectionButton;
 
     public OnViewClick() {
         setContentPane(contentPane);
@@ -51,7 +53,7 @@ public class OnViewClick extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
+    public void showFrame() {
         OnViewClick dialog = new OnViewClick();
         dialog.pack();
         dialog.setVisible(true);

@@ -16,8 +16,9 @@ public class Screen {
         viewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "View Button"); // temporary
                 // TODO: View Button
+                OnViewClick view = new OnViewClick();
+                view.showFrame();
 
             }
         });

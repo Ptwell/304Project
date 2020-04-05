@@ -5,7 +5,10 @@
     <constraints>
       <xy x="21" y="66" width="1224" height="708"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-3680293"/>
+      <focusTraversalPolicyProvider value="false"/>
+    </properties>
     <border type="none"/>
     <children>
       <component id="bc7c3" class="javax.swing.JButton" binding="insertButton" default-binding="true">
@@ -35,7 +38,10 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-16777216"/>
           <enabled value="false"/>
+          <font name="Comic Sans MS" size="24" style="1"/>
+          <foreground color="-16777216"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
           <text value="Please choose one of the query options below."/>
