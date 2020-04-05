@@ -1,4 +1,4 @@
-package Handlers.ViewHandlers;
+package Handlers;
 
 public class DeleteHandler {
 }
