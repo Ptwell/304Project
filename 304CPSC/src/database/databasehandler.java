@@ -56,7 +56,7 @@ public class databasehandler {
 
     public void insertBranch(Game model) {
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO GAME VALUES (?,?)");
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO Game VALUES (?,?)");
             ps.setInt(1, model.getGameID());
             ps.setString(2, model.getGameName());
 
@@ -112,7 +112,7 @@ public class databasehandler {
 
     public void updateBranch(int id, String name) {
         try {
-            PreparedStatement ps = connection.prepareStatement("UPDATE GAME SET GameID = ? WHERE GameName = ?");
+            PreparedStatement ps = connection.prepareStatement("UPDATE Game SET GameID = ? WHERE GameName = ?");
             ps.setString(1, name);
             ps.setInt(2, id);
 
@@ -180,7 +180,7 @@ public class databasehandler {
 
             while(rs.next()) {
                 if(rs.getString(1).toLowerCase().equals("Game")) {
-                    stmt.execute("DROP TABLE game");
+                    stmt.execute("DROP TABLE Game");
                     break;
                 }
             }
