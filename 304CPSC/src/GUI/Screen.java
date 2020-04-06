@@ -17,7 +17,6 @@ public class Screen {
             public void actionPerformed(ActionEvent e) {
                 // TODO: View Button
                 OnViewClick view = new OnViewClick();
-                JFrame v = new JFrame("Please select one of the following");
                 view.showFrame(view);
 
             }
