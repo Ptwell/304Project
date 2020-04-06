@@ -9,6 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Distributor;
+
+import javax.swing.*;
+
 public class distributorHandler {
     // Use this version of the ORACLE_URL if you are running the code off of the server
 //	private static final String ORACLE_URL = "jdbc:oracle:thin:@dbhost.students.cs.ubc.ca:1522:stu";
@@ -25,7 +28,7 @@ public class distributorHandler {
             // Note that the path could change for new drivers
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -35,7 +38,7 @@ public class distributorHandler {
                 connection.close();
             }
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -46,14 +49,14 @@ public class distributorHandler {
 
             int rowCount = ps.executeUpdate();
             if (rowCount == 0) {
-                System.out.println(WARNING_TAG + " distributor " + distributorName + " does not exist!");
+                JOptionPane.showMessageDialog(null, WARNING_TAG + " distributor " + distributorName + " does not exist!");
             }
 
             connection.commit();
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -74,7 +77,7 @@ public class distributorHandler {
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -89,7 +92,7 @@ public class distributorHandler {
 //    		// get info on ResultSet
 //    		ResultSetMetaData rsmd = rs.getMetaData();
 //
-//    		System.out.println(" ");
+//    		JOptionPane.showMessageDialog(null, " ");
 //
 //    		// display column names;
 //    		for (int i = 0; i < rsmd.getColumnCount(); i++) {
@@ -106,7 +109,7 @@ public class distributorHandler {
             rs.close();
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
 
         return result.toArray(new Distributor[result.size()]);
@@ -120,14 +123,14 @@ public class distributorHandler {
 
             int rowCount = ps.executeUpdate();
             if (rowCount == 0) {
-                System.out.println(WARNING_TAG + " Distributor " + name + " does not exist!");
+                JOptionPane.showMessageDialog(null, WARNING_TAG + " Distributor " + name + " does not exist!");
             }
 
             connection.commit();
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -141,10 +144,10 @@ public class distributorHandler {
             connection = DriverManager.getConnection(ORACLE_URL, username, password);
             connection.setAutoCommit(false);
 
-            System.out.println("\nConnected to Oracle!");
+            JOptionPane.showMessageDialog(null, "\nConnected to Oracle!");
             return true;
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             return false;
         }
     }
@@ -153,7 +156,7 @@ public class distributorHandler {
         try  {
             connection.rollback();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -165,7 +168,7 @@ public class distributorHandler {
             stmt.executeUpdate("CREATE TABLE Distributor(DiName CHAR(20), PaymentMethod CHAR (20), PRIMARY_KEY(DiName));");
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
 
        // BranchModel branch1 = new BranchModel("123 Charming Ave", "Vancouver", 1, "First Branch", 1234567);
@@ -190,7 +193,7 @@ public class distributorHandler {
             rs.close();
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 }

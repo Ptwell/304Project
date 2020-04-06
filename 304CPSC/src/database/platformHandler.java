@@ -10,8 +10,10 @@ import java.util.ArrayList;
 
 import model.Platform;
 
+import javax.swing.*;
 
-    /**
+
+/**
      * This class handles all database related transactions
      */
     public class platformHandler {
@@ -30,7 +32,7 @@ import model.Platform;
                 // Note that the path could change for new drivers
                 DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
             } catch (SQLException e) {
-                System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+                JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             }
         }
 
@@ -40,7 +42,7 @@ import model.Platform;
                     connection.close();
                 }
             } catch (SQLException e) {
-                System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+                JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             }
         }
 
@@ -51,14 +53,14 @@ import model.Platform;
 
                 int rowCount = ps.executeUpdate();
                 if (rowCount == 0) {
-                    System.out.println(WARNING_TAG + " Brand " + brand + " does not exist!");
+                    JOptionPane.showMessageDialog(null, WARNING_TAG + " Brand " + brand + " does not exist!");
                 }
 
                 connection.commit();
 
                 ps.close();
             } catch (SQLException e) {
-                System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+                JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
                 rollbackConnection();
             }
         }
@@ -80,7 +82,7 @@ import model.Platform;
 
                 ps.close();
             } catch (SQLException e) {
-                System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+                JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
                 rollbackConnection();
             }
         }
@@ -95,7 +97,7 @@ import model.Platform;
 //    		// get info on ResultSet
 //    		ResultSetMetaData rsmd = rs.getMetaData();
 //
-//    		System.out.println(" ");
+//    		JOptionPane.showMessageDialog(null, " ");
 //
 //    		// display column names;
 //    		for (int i = 0; i < rsmd.getColumnCount(); i++) {
@@ -113,7 +115,7 @@ import model.Platform;
                 rs.close();
                 stmt.close();
             } catch (SQLException e) {
-                System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+                JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             }
 
             return result.toArray(new Platform[result.size()]);
@@ -127,14 +129,14 @@ import model.Platform;
                 ps.setString(2, controls);
                 int rowCount = ps.executeUpdate();
                 if (rowCount == 0) {
-                    System.out.println(WARNING_TAG + " Platform " + brand + " does not exist!");
+                    JOptionPane.showMessageDialog(null, WARNING_TAG + " Platform " + brand + " does not exist!");
                 }
 
                 connection.commit();
 
                 ps.close();
             } catch (SQLException e) {
-                System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+                JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
                 rollbackConnection();
             }
         }
@@ -148,10 +150,10 @@ import model.Platform;
                 connection = DriverManager.getConnection(ORACLE_URL, username, password);
                 connection.setAutoCommit(false);
 
-                System.out.println("\nConnected to Oracle!");
+                JOptionPane.showMessageDialog(null, "\nConnected to Oracle!");
                 return true;
             } catch (SQLException e) {
-                System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+                JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
                 return false;
             }
         }
@@ -160,7 +162,7 @@ import model.Platform;
             try  {
                 connection.rollback();
             } catch (SQLException e) {
-                System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+                JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             }
         }
 
@@ -171,7 +173,7 @@ import model.Platform;
                 Statement stmt = connection.createStatement();
                 stmt.executeUpdate("create_table_Platform(Brand CHAR(20), Hardware/DeviceType CHAR(20), controls CHAR(20), PRIMARY_KEY(Brand, Hardware/DeviceType)");
             } catch (SQLException e) {
-                System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+                JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             }
 
            // BranchModel branch1 = new BranchModel("123 Charming Ave", "Vancouver", 1, "First Branch", 1234567);
@@ -196,7 +198,7 @@ import model.Platform;
                 rs.close();
                 stmt.close();
             } catch (SQLException e) {
-                System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+                JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             }
         }
 }

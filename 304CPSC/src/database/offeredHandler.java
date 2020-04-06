@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 import model.Offered;
 
+import javax.swing.*;
+
 
 public class offeredHandler {
     // Use this version of the ORACLE_URL if you are running the code off of the server
@@ -26,7 +28,7 @@ public class offeredHandler {
             // Note that the path could change for new drivers
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -36,7 +38,7 @@ public class offeredHandler {
                 connection.close();
             }
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -48,14 +50,14 @@ public class offeredHandler {
 
             int rowCount = ps.executeUpdate();
             if (rowCount == 0) {
-                System.out.println(WARNING_TAG + " Offered " + gameID + distributorName+" does not exist!");
+                JOptionPane.showMessageDialog(null, WARNING_TAG + " Offered " + gameID + distributorName+" does not exist!");
             }
 
             connection.commit();
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -78,7 +80,7 @@ public class offeredHandler {
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -93,7 +95,7 @@ public class offeredHandler {
 //    		// get info on ResultSet
 //    		ResultSetMetaData rsmd = rs.getMetaData();
 //
-//    		System.out.println(" ");
+//    		JOptionPane.showMessageDialog(null, " ");
 //
 //    		// display column names;
 //    		for (int i = 0; i < rsmd.getColumnCount(); i++) {
@@ -112,7 +114,7 @@ public class offeredHandler {
             rs.close();
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
 
         return result.toArray(new Offered[result.size()]);
@@ -128,14 +130,14 @@ public class offeredHandler {
 
             int rowCount = ps.executeUpdate();
             if (rowCount == 0) {
-                System.out.println(WARNING_TAG + " Offered " + gameId + distributorNname +" does not exist!");
+                JOptionPane.showMessageDialog(null, WARNING_TAG + " Offered " + gameId + distributorNname +" does not exist!");
             }
 
             connection.commit();
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -149,10 +151,10 @@ public class offeredHandler {
             connection = DriverManager.getConnection(ORACLE_URL, username, password);
             connection.setAutoCommit(false);
 
-            System.out.println("\nConnected to Oracle!");
+            JOptionPane.showMessageDialog(null, "\nConnected to Oracle!");
             return true;
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             return false;
         }
     }
@@ -161,7 +163,7 @@ public class offeredHandler {
         try  {
             connection.rollback();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -176,7 +178,7 @@ public class offeredHandler {
 
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
 
         //BranchModel branch1 = new BranchModel("123 Charming Ave", "Vancouver", 1, "First Branch", 1234567);
@@ -201,7 +203,7 @@ public class offeredHandler {
             rs.close();
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 }

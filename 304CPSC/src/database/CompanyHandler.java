@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import model.Company;
 
+import javax.swing.*;
+
 public class CompanyHandler {
     // Use this version of the ORACLE_URL if you are running the code off of the server
 //	private static final String ORACLE_URL = "jdbc:oracle:thin:@dbhost.students.cs.ubc.ca:1522:stu";
@@ -24,7 +26,7 @@ public class CompanyHandler {
             // Note that the path could change for new drivers
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -34,7 +36,7 @@ public class CompanyHandler {
                 connection.close();
             }
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -45,14 +47,14 @@ public class CompanyHandler {
 
             int rowCount = ps.executeUpdate();
             if (rowCount == 0) {
-                System.out.println(WARNING_TAG + " Company " + name + " does not exist!");
+                JOptionPane.showMessageDialog(null, WARNING_TAG + " Company " + name + " does not exist!");
             }
 
             connection.commit();
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -70,7 +72,7 @@ public class CompanyHandler {
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -85,7 +87,7 @@ public class CompanyHandler {
 //    		// get info on ResultSet
 //    		ResultSetMetaData rsmd = rs.getMetaData();
 //
-//    		System.out.println(" ");
+//    		JOptionPane.showMessageDialog(null, " ");
 //
 //    		// display column names;
 //    		for (int i = 0; i < rsmd.getColumnCount(); i++) {
@@ -103,7 +105,7 @@ public class CompanyHandler {
             rs.close();
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
 
         return result.toArray(new Company[result.size()]);
@@ -117,14 +119,14 @@ public class CompanyHandler {
 
             int rowCount = ps.executeUpdate();
             if (rowCount == 0) {
-                System.out.println(WARNING_TAG + " Company " + name + " does not exist!");
+                JOptionPane.showMessageDialog(null, WARNING_TAG + " Company " + name + " does not exist!");
             }
 
             connection.commit();
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -138,10 +140,10 @@ public class CompanyHandler {
             connection = DriverManager.getConnection(ORACLE_URL, username, password);
             connection.setAutoCommit(false);
 
-            System.out.println("\nConnected to Oracle!");
+            JOptionPane.showMessageDialog(null, "\nConnected to Oracle!");
             return true;
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             return false;
         }
     }
@@ -150,7 +152,7 @@ public class CompanyHandler {
         try  {
             connection.rollback();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -162,7 +164,7 @@ public class CompanyHandler {
             stmt.executeUpdate("CREATE TABLE (Cname CHAR(20), Location CHAR(20), PRIMARY KEY(Cname))");
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
 
 
@@ -183,7 +185,7 @@ public class CompanyHandler {
             rs.close();
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 }

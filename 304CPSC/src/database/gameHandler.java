@@ -9,6 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Game;
+
+import javax.swing.*;
+
 public class gameHandler {
     private static final String ORACLE_URL = "jdbc:oracle:thin:@localhost:1522:stu";
     private static final String EXCEPTION_TAG = "[EXCEPTION]";
@@ -21,7 +24,7 @@ public class gameHandler {
             // Note that the path could change for new drivers
             DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -31,7 +34,7 @@ public class gameHandler {
                 connection.close();
             }
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -42,14 +45,14 @@ public class gameHandler {
 
             int rowCount = ps.executeUpdate();
             if (rowCount == 0) {
-                System.out.println(WARNING_TAG + " game " + gamID + " does not exist!");
+                JOptionPane.showMessageDialog(null, WARNING_TAG + " game " + gamID + " does not exist!");
             }
 
             connection.commit();
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -71,7 +74,7 @@ public class gameHandler {
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -86,7 +89,7 @@ public class gameHandler {
 //    		// get info on ResultSet
 //    		ResultSetMetaData rsmd = rs.getMetaData();
 //
-//    		System.out.println(" ");
+//    		JOptionPane.showMessageDialog(null, " ");
 //
 //    		// display column names;
 //    		for (int i = 0; i < rsmd.getColumnCount(); i++) {
@@ -104,7 +107,7 @@ public class gameHandler {
             rs.close();
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
 
         return result.toArray(new Game[result.size()]);
@@ -118,14 +121,14 @@ public class gameHandler {
 
             int rowCount = ps.executeUpdate();
             if (rowCount == 0) {
-                System.out.println(WARNING_TAG + " GAME " + id + " does not exist!");
+                JOptionPane.showMessageDialog(null, WARNING_TAG + " GAME " + id + " does not exist!");
             }
 
             connection.commit();
 
             ps.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             rollbackConnection();
         }
     }
@@ -139,10 +142,10 @@ public class gameHandler {
             connection = DriverManager.getConnection(ORACLE_URL, username, password);
             connection.setAutoCommit(false);
 
-            System.out.println("\nConnected to Oracle!");
+            JOptionPane.showMessageDialog(null, "\nConnected to Oracle!");
             return true;
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
             return false;
         }
     }
@@ -151,7 +154,7 @@ public class gameHandler {
         try  {
             connection.rollback();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 
@@ -163,7 +166,7 @@ public class gameHandler {
             stmt.executeUpdate("create_table_Game(GameID INTEGER(20), GName CHAR(20), PRIMARY_KEY(GameID));");
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
 
         //*BranchModel branch1 = new BranchModel("123 Charming Ave", "Vancouver", 1, "First Branch", 1234567);
@@ -188,7 +191,7 @@ public class gameHandler {
             rs.close();
             stmt.close();
         } catch (SQLException e) {
-            System.out.println(EXCEPTION_TAG + " " + e.getMessage());
+            JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
 }
