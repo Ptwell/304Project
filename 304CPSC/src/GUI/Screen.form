@@ -39,7 +39,7 @@
         </constraints>
         <properties>
           <background color="-16777216"/>
-          <enabled value="false"/>
+          <enabled value="true"/>
           <font name="Comic Sans MS" size="24" style="1"/>
           <foreground color="-16777216"/>
           <horizontalAlignment value="0"/>

@@ -1,8 +1,7 @@
 package GUI;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class Screen {
     private JPanel panel1;
@@ -18,7 +17,8 @@ public class Screen {
             public void actionPerformed(ActionEvent e) {
                 // TODO: View Button
                 OnViewClick view = new OnViewClick();
-                view.showFrame();
+                JFrame v = new JFrame("Please select one of the following");
+                view.showFrame(view);
 
             }
         });
@@ -49,6 +49,7 @@ public class Screen {
 
     public void showFrame() {
         JFrame frame = new JFrame("QueryHandler");
+        JOptionPane.setRootFrame(frame);
         frame.setContentPane(new Screen() .panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
