@@ -10,12 +10,15 @@ public class MainClass {
     private LoginWindow lw = null;
 
     public MainClass() {
-
+        gh = new gameHandler();
     }
 
     private void start() {
-        lw = new LoginWindow();
-        lw.showFrame(this);
+//        lw = new LoginWindow();
+//        lw.showFrame(this);
+//        screen = new Screen();
+//        screen.showFrame();
+          login("ora_peterle", "a21320163");
 
     }
 
@@ -29,17 +32,9 @@ public class MainClass {
 
         if (didConnect) {
             // Once connected, remove login window and start text transaction flow
-            lw.dispose();
+            // lw.dispose();
             screen = new Screen();
             screen.showFrame();
-        } else {
-            lw.handleLoginFailed();
-
-            if (lw.hasReachedMaxLoginAttempts()) {
-                lw.dispose();
-                System.out.println("You have exceeded your number of allowed attempts");
-                System.exit(-1);
-            }
         }
     }
 }
