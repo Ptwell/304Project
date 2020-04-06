@@ -8,7 +8,6 @@ public class OnViewClick extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JButton projectionButton;
     private JButton selectionButton;
     private Container returnPane;
 
