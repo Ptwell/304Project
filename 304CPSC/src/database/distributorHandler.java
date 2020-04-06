@@ -8,14 +8,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import model.Game;
-public class databasehandler {
+import model.Distributor;
+public class distributorHandler {
+    // Use this version of the ORACLE_URL if you are running the code off of the server
+//	private static final String ORACLE_URL = "jdbc:oracle:thin:@dbhost.students.cs.ubc.ca:1522:stu";
+    // Use this version of the ORACLE_URL if you are tunneling into the undergrad servers
     private static final String ORACLE_URL = "jdbc:oracle:thin:@localhost:1522:stu";
     private static final String EXCEPTION_TAG = "[EXCEPTION]";
     private static final String WARNING_TAG = "[WARNING]";
 
     private Connection connection = null;
-    public databasehandler() {
+
+    public distributorHandler() {
         try {
             // Load the Oracle JDBC driver
             // Note that the path could change for new drivers
@@ -35,14 +39,14 @@ public class databasehandler {
         }
     }
 
-    public void deleteBranch(int gamID) {
+    public void deleteDistributor(String distributorName) {
         try {
-            PreparedStatement ps = connection.prepareStatement("DELETE FROM Game WHERE GameID = ?");
-            ps.setInt(1, gamID);
+            PreparedStatement ps = connection.prepareStatement("DELETE FROM Distributor WHERE distributorName = ?");
+            ps.setString(1, distributorName);
 
             int rowCount = ps.executeUpdate();
             if (rowCount == 0) {
-                System.out.println(WARNING_TAG + " game " + gamID + " does not exist!");
+                System.out.println(WARNING_TAG + " distributor " + distributorName + " does not exist!");
             }
 
             connection.commit();
@@ -54,17 +58,16 @@ public class databasehandler {
         }
     }
 
-    public void insertBranch(Game model) {
+    public void insertBranch(Distributor model) {
         try {
-            PreparedStatement ps = connection.prepareStatement("INSERT INTO Game VALUES (?,?)");
-            ps.setInt(1, model.getGameID());
-            ps.setString(2, model.getGameName());
-
-            /*if (model.getPhoneNumber() == 0) {
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO branch VALUES (?,?)");
+            ps.setString(1, model.getDistributorName());
+            ps.setString(2, model.getPaymentMethod());
+           /* if (model.getPhoneNumber() == 0) {
                 ps.setNull(5, java.sql.Types.INTEGER);
             } else {
                 ps.setInt(5, model.getPhoneNumber());
-            }**/
+            }*/
 
             ps.executeUpdate();
             connection.commit();
@@ -76,12 +79,12 @@ public class databasehandler {
         }
     }
 
-    public Game[] getBGameInfo() {
-        ArrayList<Game> result = new ArrayList<Game>();
+    public Distributor[] getDistributorInfo() {
+        ArrayList<Distributor> result = new ArrayList<Distributor>();
 
         try {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Game");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM branch");
 
 //    		// get info on ResultSet
 //    		ResultSetMetaData rsmd = rs.getMetaData();
@@ -95,9 +98,8 @@ public class databasehandler {
 //    		}
 
             while(rs.next()) {
-                Game model = new Game(rs.getInt("gameID"),
-                        rs.getString("game name"));
-
+                Distributor model = new Distributor(rs.getString("distributorName"),
+                        rs.getString("paymentMethod"));
                 result.add(model);
             }
 
@@ -107,18 +109,18 @@ public class databasehandler {
             System.out.println(EXCEPTION_TAG + " " + e.getMessage());
         }
 
-        return result.toArray(new Game[result.size()]);
+        return result.toArray(new Distributor[result.size()]);
     }
 
-    public void updateBranch(int id, String name) {
+    public void updateDistributor(String name, String paymentMethod) {
         try {
-            PreparedStatement ps = connection.prepareStatement("UPDATE Game SET GameID = ? WHERE GameName = ?");
-            ps.setString(1, name);
-            ps.setInt(2, id);
+            PreparedStatement ps = connection.prepareStatement("UPDATE branch SET paymentMethod = ? WHERE name = ?");
+            ps.setString(2, name);
+            ps.setString(1, paymentMethod);
 
             int rowCount = ps.executeUpdate();
             if (rowCount == 0) {
-                System.out.println(WARNING_TAG + " GAME " + id + " does not exist!");
+                System.out.println(WARNING_TAG + " Distributor " + name + " does not exist!");
             }
 
             connection.commit();
@@ -160,14 +162,14 @@ public class databasehandler {
 
         try {
             Statement stmt = connection.createStatement();
-            stmt.executeUpdate("create_table_Game(GameID INTEGER(20), GName CHAR(20), PRIMARY_KEY(GameID));");
+            stmt.executeUpdate("CREATE TABLE Distributor(DiName CHAR(20), PaymentMethod CHAR (20), PRIMARY_KEY(DiName));");
             stmt.close();
         } catch (SQLException e) {
             System.out.println(EXCEPTION_TAG + " " + e.getMessage());
         }
 
-        //*BranchModel branch1 = new BranchModel("123 Charming Ave", "Vancouver", 1, "First Branch", 1234567);
-        //insertBranch(branch1);
+       // BranchModel branch1 = new BranchModel("123 Charming Ave", "Vancouver", 1, "First Branch", 1234567);
+       // insertBranch(branch1);
 
        // BranchModel branch2 = new BranchModel("123 Coco Ave", "Vancouver", 2, "Second Branch", 1234568);
        // insertBranch(branch2);
@@ -179,8 +181,8 @@ public class databasehandler {
             ResultSet rs = stmt.executeQuery("select table_name from user_tables");
 
             while(rs.next()) {
-                if(rs.getString(1).toLowerCase().equals("Game")) {
-                    stmt.execute("DROP TABLE Game");
+                if(rs.getString(1).toLowerCase().equals("distributor")) {
+                    stmt.execute("DROP TABLE Distributor");
                     break;
                 }
             }
