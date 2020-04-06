@@ -94,23 +94,35 @@ public class gameHandler extends TableSetUp {
             connection = DriverManager.getConnection(ORACLE_URL, "ora_peterle", "a21320163");
           //  connection.setAutoCommit(false);
             Statement stmt = connection.createStatement();
+         //   ResultSet ds = stmt.getGeneratedKeys();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Game");
 
 ////    		// get info on ResultSet
-//    		ResultSetMetaData rsmd = rs.getMetaData();
-////
-////    		JOptionPane.showMessageDialog(null, " ");
-////
-//    		// display column names;
-//            int cc = rsmd.getColumnCount();
-//            columns = new String[cc];
+    		ResultSetMetaData rsmd = rs.getMetaData();
+
+    	//	ResultSetMetaData rsmdRow = ds.getMetaData();
+    		int qr = rs.getFetchSize();
+//
+//    		JOptionPane.showMessageDialog(null, " ");
+//
+    		// display column names;
+            int cc = rsmd.getColumnCount();
+       //     int rr = rsmdRow.getColumnCount();
+            columns = new String[cc];
             columns = new String[]{"gameID", "gameName"};
 
-//    		for (int i = 0; i < cc; i++) {
-//    			// get column name and print it
-//    			columns[i] =  rsmd.getColumnName(i + 1);
-//    			rsmd.get
-//    		}
+    		for (int i = 0; i < cc; i++) {
+    			// get column name and print it
+    			columns[i] =  rsmd.getColumnName(i + 1);
+    		}
+    		rs.beforeFirst();
+    		for(int i = 0; i < qr; i++) {
+                Game model = new Game(rs.getInt("gameID"),
+                        rs.getString("gameName"));
+
+                result.add(model);
+                rs.next();
+            }
 
             while(rs.next()) {
                 Game model = new Game(rs.getInt("gameID"),
@@ -158,6 +170,7 @@ public class gameHandler extends TableSetUp {
             connection.setAutoCommit(false);
 
             JOptionPane.showMessageDialog(null, "\nConnected to Oracle!");
+
 //
 //                PreparedStatement ps = connection.prepareStatement("start databaseGames.sql");
 //                connection.commit();
