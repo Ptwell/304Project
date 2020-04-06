@@ -151,6 +151,18 @@ public class gameHandler extends TableSetUp {
             connection.setAutoCommit(false);
 
             JOptionPane.showMessageDialog(null, "\nConnected to Oracle!");
+            try {
+                PreparedStatement ps = connection.prepareStatement("start databaseGames.sql");
+                connection.commit();
+                ps.executeUpdate();
+                ps = connection.prepareStatement("start populate_games.sql");
+                connection.commit();
+                ps.executeUpdate();
+                ps.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
+                rollbackConnection();
+            }
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
