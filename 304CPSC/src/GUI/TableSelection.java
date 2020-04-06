@@ -72,8 +72,11 @@ public class TableSelection extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 updateTable();
+                table1.updateUI();
                 performOption();
             }
+        });
+        table1.addComponentListener(new ComponentAdapter() {
         });
     }
 

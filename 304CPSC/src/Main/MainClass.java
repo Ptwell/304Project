@@ -36,7 +36,7 @@ public class MainClass {
             /**
              * run main()
              * ssh -l peterle -L localhost:1522:dbhost.students.cs.ubc.ca:1522 remote.students.cs.ubc.ca
-             * enter:  a21320163
+             * enter:  ********
              * enter: sqlplus ora_peterle@stu
              * enter: a21320163
              * enter: start databaseGames.sql
