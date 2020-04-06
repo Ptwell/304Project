@@ -49,7 +49,7 @@ create table Distributor(
 create table Offered(
     GameID INTEGER NOT NULL, 
     DiName CHAR(20) NOT NULL, 
-    Price_Given INTEGER, 
+    Price_Given VARCHAR(20), 
     publisher CHAR(20),
     PRIMARY KEY(GameID, DiName),
     FOREIGN KEY(GameID) REFERENCES Game(GameID) ON DELETE CASCADE,
@@ -82,7 +82,7 @@ create table SupportedOn(
 );
 
 create table DLC(
-    DName CHAR(20) NOT NULL, 
+    DName CHAR(40) NOT NULL, 
     GameID INTEGER NOT NULL, 
     price_dlc INTEGER, 
     PRIMARY KEY(DName, GameID), 
@@ -162,48 +162,4 @@ create table Supply(
     FOREIGN KEY (Username) REFERENCES Account(Username) ON DELETE CASCADE,
     FOREIGN KEY (Cname) REFERENCES Company(CName) ON DELETE CASCADE
 );
-
-INSERT INTO Platform VALUES ('Mojang', 'PC', 'Keyboard');
-
-INSERT INTO Game VALUES (1, 'Minecraft');
-
-INSERT INTO GName VALUES ('Minecraft', 2009, 'Adventure');
-
-INSERT INTO Distributor VALUES ('Mojang', 'Online');
-
-/* Is FREE == NULL? */
-INSERT INTO Offered VALUES (1, 'Mojang', 25, 'Mojang');
-
-INSERT INTO PVP VALUES (1, 10);
-
-INSERT INTO PVE VALUES (1, 1, 'Normal', 'Casual');
-
-INSERT INTO SupportedOn VALUES ('Mojang','PC', 1);
-
-INSERT INTO DLC VALUES ('WOW: Burning Crusade', 1, 40);
-
-
-INSERT INTO Company VALUES ('Mojang', 'Sweden');
-
-
-INSERT INTO MadeBy VALUES ('Mojang', 1);
-
-INSERT INTO Person VALUES ('Peter', 123456789, 'peter@gmail.com');
-
-INSERT INTO TeamWorksAt VALUES (2, 'Marketing', 'Mojang');
-
-INSERT INTO Position VALUES ('Manager', 100000);
-
-INSERT INTO Consume VALUES ('Peter', 123456789, 1);
-
-INSERT INTO Account VALUES ('Peter001', 'password123', 'peter@gmail.com', 'Peter', 123456789);
-
-
-INSERT INTO ProfileHas VALUES (123, 10, TO_DATE('2011-10-24','YYYY-MM-DD'), 'UserPeter', 'Peter001');
-
-
-INSERT INTO Supply VALUES ('Peter001', 'Mojang');
-
-
-
 
