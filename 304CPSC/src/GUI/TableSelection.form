@@ -75,6 +75,7 @@
             </constraints>
             <properties>
               <model>
+                <item value="None"/>
                 <item value="Platform"/>
                 <item value="Game"/>
                 <item value="Distributor"/>
