@@ -1,21 +1,19 @@
 package database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
+import TableClasses.TableSetUp;
 import model.Game;
 
 import javax.swing.*;
 
-public class gameHandler {
+public class gameHandler extends TableSetUp {
     private static final String ORACLE_URL = "jdbc:oracle:thin:@localhost:1522:stu";
     private static final String EXCEPTION_TAG = "[EXCEPTION]";
     private static final String WARNING_TAG = "[WARNING]";
+    private String[] columns;
+    private JTable table;
 
     private Connection connection = null;
     public gameHandler() {
@@ -27,6 +25,16 @@ public class gameHandler {
             JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
         }
     }
+
+
+    public JTable makeTable() {
+        Object[] data = this.getGameInfo();
+        table = new JTable((Object[][]) data, columns);
+        return table;
+
+    }
+
+
 
     public void close() {
         try {
@@ -83,23 +91,30 @@ public class gameHandler {
         ArrayList<Game> result = new ArrayList<Game>();
 
         try {
+            connection = DriverManager.getConnection(ORACLE_URL, "ora_peterle", "a21320163");
+          //  connection.setAutoCommit(false);
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Game");
 
-//    		// get info on ResultSet
+////    		// get info on ResultSet
 //    		ResultSetMetaData rsmd = rs.getMetaData();
-//
-//    		JOptionPane.showMessageDialog(null, " ");
-//
+////
+////    		JOptionPane.showMessageDialog(null, " ");
+////
 //    		// display column names;
-//    		for (int i = 0; i < rsmd.getColumnCount(); i++) {
+//            int cc = rsmd.getColumnCount();
+//            columns = new String[cc];
+            columns = new String[]{"gameID", "gameName"};
+
+//    		for (int i = 0; i < cc; i++) {
 //    			// get column name and print it
-//    			System.out.printf("%-15s", rsmd.getColumnName(i + 1));
+//    			columns[i] =  rsmd.getColumnName(i + 1);
+//    			rsmd.get
 //    		}
 
             while(rs.next()) {
                 Game model = new Game(rs.getInt("gameID"),
-                        rs.getString("game name"));
+                        rs.getString("gameName"));
 
                 result.add(model);
             }
@@ -143,6 +158,15 @@ public class gameHandler {
             connection.setAutoCommit(false);
 
             JOptionPane.showMessageDialog(null, "\nConnected to Oracle!");
+//
+//                PreparedStatement ps = connection.prepareStatement("start databaseGames.sql");
+//                connection.commit();
+//                ps.executeUpdate();
+//                ps = connection.prepareStatement("start populate_games.sql");
+//                connection.commit();
+//                ps.executeUpdate();
+//                ps.close();
+
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());

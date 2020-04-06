@@ -8,7 +8,6 @@ public class OnViewClick extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JButton projectionButton;
     private JButton selectionButton;
     private Container returnPane;
 
@@ -42,6 +41,14 @@ public class OnViewClick extends JDialog {
 //                onCancel();
 //            }
 //        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        selectionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                TableSelection t = new TableSelection();
+                dispose();
+                t.showFrame(t,returnPane);
+            }
+        });
     }
 
     private void onOK() {

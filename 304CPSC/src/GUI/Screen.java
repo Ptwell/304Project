@@ -17,7 +17,6 @@ public class Screen {
             public void actionPerformed(ActionEvent e) {
                 // TODO: View Button
                 OnViewClick view = new OnViewClick();
-                JFrame v = new JFrame("Please select one of the following");
                 view.showFrame(view);
 
             }
@@ -43,6 +42,24 @@ public class Screen {
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, "Delete Button"); // temporary
                 // TODO: Insert Button
+            }
+        });
+        updateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
+        insertButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
+            }
+        });
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+
             }
         });
     }
