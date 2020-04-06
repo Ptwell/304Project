@@ -67,11 +67,11 @@ public class OnViewClick extends JDialog {
     }
 
     public void showFrame(OnViewClick view) {
-        OnViewClick dialog = new OnViewClick();
         returnPane = getContentPane();
         view.setContentPane(contentPane);
-        // dialog.setModal(true);
-        // dialog.getRootPane().setDefaultButton(buttonOK);
+        view.setModal(true);
+        view.setTitle("Please choose one of the options below");
+        view.getRootPane().setDefaultButton(buttonOK);
         view.pack();
         view.setVisible(true);
         // System.exit(0);
