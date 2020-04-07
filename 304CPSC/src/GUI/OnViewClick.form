@@ -56,7 +56,7 @@
           </grid>
         </children>
       </grid>
-      <grid id="e3588" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="e3588" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -67,24 +67,14 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="b7a3a" class="javax.swing.JButton" binding="projectionButton" default-binding="true">
+          <component id="a86e5" class="javax.swing.JButton" binding="selectionButton" default-binding="true">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="300" height="100"/>
               </grid>
             </constraints>
             <properties>
-              <text value="Projection"/>
-            </properties>
-          </component>
-          <component id="a86e5" class="javax.swing.JButton" binding="selectionButton" default-binding="true">
-            <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="300" height="100"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="Selection"/>
+              <text value="Select Tables"/>
             </properties>
           </component>
         </children>
@@ -111,7 +101,7 @@
         </constraints>
         <properties>
           <font name="Comic Sans MS" size="22" style="1"/>
-          <text value="Would you like to project or select tables?"/>
+          <text value="Would you like to select tables?"/>
         </properties>
       </component>
     </children>

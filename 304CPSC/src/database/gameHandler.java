@@ -91,23 +91,30 @@ public class gameHandler extends TableSetUp {
         ArrayList<Game> result = new ArrayList<Game>();
 
         try {
+            connection = DriverManager.getConnection(ORACLE_URL, "ora_peterle", "a21320163");
+          //  connection.setAutoCommit(false);
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Game");
 
-//    		// get info on ResultSet
-    		ResultSetMetaData rsmd = rs.getMetaData();
-//
-//    		JOptionPane.showMessageDialog(null, " ");
-//
-    		// display column names;
-    		for (int i = 0; i < rsmd.getColumnCount(); i++) {
-    			// get column name and print it
-    			columns[i] =  rsmd.getColumnName(i + 1);
-    		}
+////    		// get info on ResultSet
+//    		ResultSetMetaData rsmd = rs.getMetaData();
+////
+////    		JOptionPane.showMessageDialog(null, " ");
+////
+//    		// display column names;
+//            int cc = rsmd.getColumnCount();
+//            columns = new String[cc];
+            columns = new String[]{"gameID", "gameName"};
+
+//    		for (int i = 0; i < cc; i++) {
+//    			// get column name and print it
+//    			columns[i] =  rsmd.getColumnName(i + 1);
+//    			rsmd.get
+//    		}
 
             while(rs.next()) {
                 Game model = new Game(rs.getInt("gameID"),
-                        rs.getString("game name"));
+                        rs.getString("gameName"));
 
                 result.add(model);
             }
@@ -151,6 +158,15 @@ public class gameHandler extends TableSetUp {
             connection.setAutoCommit(false);
 
             JOptionPane.showMessageDialog(null, "\nConnected to Oracle!");
+//
+//                PreparedStatement ps = connection.prepareStatement("start databaseGames.sql");
+//                connection.commit();
+//                ps.executeUpdate();
+//                ps = connection.prepareStatement("start populate_games.sql");
+//                connection.commit();
+//                ps.executeUpdate();
+//                ps.close();
+
             return true;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, EXCEPTION_TAG + " " + e.getMessage());
